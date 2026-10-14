@@ -1,16 +1,3 @@
-"""Ekspor satu sampel NTU RGB+D 60 beserta label aksinya ke MATLAB.
-
-Simpan file ini di folder utama hong_MSG3D, lalu jalankan di PyCharm.
-Input yang didukung adalah data joint yang telah diproses, bukan file raw
-.skeleton. Susunan array input: (N, 3, T, 25, P), dengan P = 1 atau 2.
-Output X: (3, T, 25, P), sesuai visualize_ntu_skeleton.m.
-Label dibaca dari pasangan (sample_names, labels) di val_label.pkl.
-Nama aksi mengikuti kelas resmi NTU60:
-https://github.com/shahroudy/NTURGB-D#action-classes
-
-Koordinat, urutan joint, frame, dan kedua orang dipertahankan. Skrip ini
-tidak menambahkan masking atau menjalankan model SIN.
-"""
 
 from pathlib import Path
 import pickle
