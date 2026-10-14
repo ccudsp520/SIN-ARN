@@ -1,0 +1,40 @@
+# feeder
+feeder: feeders.feeder.Feeder
+test_feeder_args:
+  data_path: ./data/xsub/val_data_joint.npy
+  label_path: ./data/xsub/val_label.pkl
+  debug: False
+
+# model
+model: model.imputation_network.Model_student
+model_args:
+  num_class: 60
+  num_point: 25
+  num_person: 2
+#  num_gcn_scales: 13    # `num_scales` == `K + 1` in the paper
+#  num_g3d_scales: 6
+#  graph: graph.ntu_rgb_d.AdjMatrixGraph #(MSG3D)
+  graph: graph.ntu_rgb_d.Graph
+  #
+  graph_args:
+    labeling_mode: 'spatial'
+  ATU_layer: 2
+  in_channels: 3
+  if_rotation: False
+  seg_num: 1
+  if_vibrate: False
+  prediction_mask: 0
+  GCNEncoder: "AGCN"
+  T: 300
+  predict_seg: 1
+
+# test
+phase: test
+device: [0]
+test_batch_size: 1 #60
+weights: ./work_dir/ntu/xsub/TS/MSAG3D_with_warm_up/train/weights/weights-57-57114.pt
+
+
+# work_dir: ./work_dir/ntu/xsub/TS_eval_msa_msg3d
+work_dir: ./work_dir/ntu/xsub/TS/MSAG3D_with_warm_up/test
+save_score: True

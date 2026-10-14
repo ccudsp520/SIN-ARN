@@ -1,0 +1,15 @@
+# Imported packages. Versions are not a validated reproduction lockfile.
+# Install PyTorch and torchvision for the matching CUDA research environment.
+# NVIDIA Apex is an additional source dependency; see README.md.
+torch
+torchvision
+numpy
+PyYAML
+tqdm
+tensorboardX
+pandas
+thop
+einops
+scikit-learn
+matplotlib
+scipy
