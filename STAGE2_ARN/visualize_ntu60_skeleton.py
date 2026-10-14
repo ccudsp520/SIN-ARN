@@ -1,29 +1,4 @@
-r"""Viewer skeleton NTU RGB+D 60 dengan label aksi langsung dari .npy/.pkl.
 
-Simpan file ini di folder utama hong_MSG3D, sejajar dengan folder data.
-Di Terminal PyCharm Windows, pasang Matplotlib:
-    .\.venv\Scripts\python.exe -m pip install matplotlib
-Lalu jalankan file ini melalui Run di PyCharm.
-
-Sumber input:
-    data/xsub/val_data_joint.npy : (N, 3, T, 25, P)
-    data/xsub/val_label.pkl      : (sample_names, labels), label 0..59
-
-Tombol: sampel sebelumnya/berikutnya, Jeda/Lanjut.
-Kotak Indeks menerima nomor sampel Python yang dimulai dari 0.
-Slider Frame menghentikan animasi agar frame pilihan dapat diperiksa.
-Spasi menjeda/melanjutkan animasi; mouse dapat memutar skeleton.
-Koordinat asli dipertahankan. Sumbu Y ditampilkan vertikal.
-Kedua orang ditampilkan jika tersedia; slot orang yang kosong disembunyikan.
-Nama aksi adalah label dataset.
-
-Referensi kelas dan topologi:
-https://github.com/shahroudy/NTURGB-D#action-classes
-https://github.com/liujf69/MMCL-Action/blob/main/graph/ntu_rgb_d.py
-Referensi tampilan:
-https://matplotlib.org/stable/api/_as_gen/matplotlib.animation.FuncAnimation.html
-https://matplotlib.org/stable/api/_as_gen/mpl_toolkits.mplot3d.art3d.Line3D.html
-"""
 
 from pathlib import Path
 import pickle
