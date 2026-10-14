@@ -29,10 +29,3 @@ Main results reported for the MSA-G3D configuration on **NTU RGB+D 60 Cross-Subj
 
 These averages cover the 12 occlusion conditions and exclude unmasked test sequences. They are manuscript results, not a new evaluation of this source release.
 
-## Setup
-
-Use a matching PyTorch training environment and the dependency lists in each stage. Stage 1 also requires the original DLNest dependency; the Stage 2 launcher imports NVIDIA Apex.
-
-Keep datasets, checkpoints, and teacher-score files outside Git. Set their paths before running scripts, and run Python from inside the relevant stage folder. The stage READMEs provide the file locations and entry points.
-
-This release contains historical NTU60 CS source. Its masking snapshots differ, and the active teacher-score fusion omits T3. See the [Stage 2 notes](STAGE2_ARN/README.md) before reproducing the five-stream setting. Newer CV and NTU120 ARN experiment scripts are not included.
