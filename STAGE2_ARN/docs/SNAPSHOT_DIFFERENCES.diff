@@ -1,0 +1,81 @@
+--- model/imputation_network.py
++++ experiment_snapshots/ntu60_cs/train/imputation_network.py
+@@ -389,9 +389,9 @@
+         num_parts = 13  # len(parts)
+         # part_indices = np.random.choice(num_parts, size=N, replace=True)
+ 
+-        #---using for "testing" fixed occlusion ---
+-        x[:,:,:, self.parts[1], :] = 0
+-        x_mask[:, :,:, self.parts[1], :] = 0 #change occlusion
++        # #---using for "testing" fixed occlusion ---
++        # x[:,:,:, self.parts[8], :] = 0
++        # x_mask[:, :,:, self.parts[8], :] = 0 #change occlusion
+ 
+         # x[:,:,:, joint_occlusion, :] = 0
+         # x_mask[:, :, :, joint_occlusion, :] = 0 #change random occlusion
+@@ -418,29 +418,29 @@
+         #             x[i_b, :, t, joint_occlusion, :] = 0
+         #             x_mask[i_b,:,t, joint_occlusion, :] = 0
+ 
+-        # # 遮擋數據 ---using for "training" include fix and random occlusion (permutation)---
+-        # for i_b in range(x.shape[0]):
+-        #     # skeletons = x[i_b]
+-        #     # 隨機選擇要遮擋的部位
+-        #     part_index = self.select_part_for_epoch()   # permutation
+-        #     part = self.parts[part_index]  # 加1是因為部位索引從1開始
+-        #     # print("part index: ",part_index)
+-        #     if part_index <= 8:
+-        #         # 遮擋所選部位
+-        #         x[i_b, :, :, part, :] = 0
+-        #         x_mask[i_b, :, :, part, :] = 0
+-        #     else:
+-        #         # miss_rate = np.random.choice([0.2,0.3,0.4,0.5,0.6])#0,0.2,0.3,0.4,0.5,0.6
++        # 遮擋數據 ---using for "training" include fix and random occlusion (permutation)---
++        for i_b in range(x.shape[0]):
++            # skeletons = x[i_b]
++            # 隨機選擇要遮擋的部位
++            part_index = self.select_part_for_epoch()   # permutation
++            part = self.parts[part_index]  # 加1是因為部位索引從1開始
++            # print("part index: ",part_index)
++            if part_index <= 8:
++                # 遮擋所選部位
++                x[i_b, :, :, part, :] = 0
++                x_mask[i_b, :, :, part, :] = 0
++            else:
++                # miss_rate = np.random.choice([0.2,0.3,0.4,0.5,0.6])#0,0.2,0.3,0.4,0.5,0.6
+         
+-        #         if 9 <= part_index <= 13:
+-        #             # print("part index: ",self.index_list[part_index-1])      #permutation
+-        #             joint_occlusion_num = int(len(self.joint_list) * self.index_list[part_index - 1])
+-        #             for t in range(x.shape[2]):
+-        #                 joint_occlusion = np.random.choice(self.joint_list, joint_occlusion_num, replace=False)
+-        #                 # print("index",self.index_list[part_index-1])
+-        #                 # print("joint", joint_occlusion)
+-        #                 x[i_b, :, t, joint_occlusion, :] = 0
+-        #                 x_mask[i_b, :, t, joint_occlusion, :] = 0
++                if 9 <= part_index <= 13:
++                    # print("part index: ",self.index_list[part_index-1])      #permutation
++                    joint_occlusion_num = int(len(self.joint_list) * self.index_list[part_index - 1])
++                    for t in range(x.shape[2]):
++                        joint_occlusion = np.random.choice(self.joint_list, joint_occlusion_num, replace=False)
++                        # print("index",self.index_list[part_index-1])
++                        # print("joint", joint_occlusion)
++                        x[i_b, :, t, joint_occlusion, :] = 0
++                        x_mask[i_b, :, t, joint_occlusion, :] = 0
+ 
+         # 定义GCN_feature的维度为(N,M,64,T,V)
+         # GCN_feature = torch.empty(N,M,64,T,V).cuda().to(torch.float32) # N,M,C,T,V  [16, 2, 64, 300, 25] #3layer
+
+--- model/imputation_network.py
++++ experiment_snapshots/ntu60_cs/test/imputation_network.py
+@@ -393,8 +393,8 @@
+         x[:,:,:, self.parts[1], :] = 0
+         x_mask[:, :,:, self.parts[1], :] = 0 #change occlusion
+ 
+-        # x[:,:,:, joint_occlusion, :] = 0
+-        # x_mask[:, :, :, joint_occlusion, :] = 0 #change random occlusion
++        x[:,:,:, joint_occlusion, :] = 0
++        x_mask[:, :, :, joint_occlusion, :] = 0 #change random occlusion
+ 
+         # # ---using for "testing" random occlusion ---
+         # for i_b in range(x.shape[0]):

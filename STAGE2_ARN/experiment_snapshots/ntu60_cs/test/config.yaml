@@ -1,0 +1,64 @@
+amp_opt_level: 1
+assume_yes: false
+base_lr: 0.01
+batch_size: 32
+checkpoint: null
+config: ./config/nturgbd-cross-subject/TS/test_joint.yaml
+debug: false
+device:
+- 0
+eval_interval: 1
+eval_start: 1
+feeder: feeders.feeder.Feeder
+forward_batch_size: 16
+half: false
+ignore_weights: []
+log_interval: 100
+model: model.imputation_network.Model_student
+model_args:
+  ATU_layer: 2
+  GCNEncoder: AGCN
+  T: 300
+  graph: graph.ntu_rgb_d.Graph
+  graph_args:
+    labeling_mode: spatial
+  if_rotation: false
+  if_vibrate: false
+  in_channels: 3
+  num_class: 60
+  num_person: 2
+  num_point: 25
+  predict_seg: 1
+  prediction_mask: 0
+  seg_num: 1
+model_saved_name: ''
+nesterov: false
+num_epoch: 80
+num_worker: 28
+only_train_epoch: 0
+only_train_part: false
+optimizer: SGD
+optimizer_states: null
+phase: test
+print_log: true
+save_interval: 1
+save_score: true
+seed: 128
+show_topk:
+- 1
+- 5
+start_epoch: 0
+step:
+- 20
+- 40
+- 60
+test_batch_size: 1
+test_feeder_args:
+  data_path: ./data/xsub/val_data_joint.npy
+  debug: false
+  label_path: ./data/xsub/val_label.pkl
+train_feeder_args: {}
+warm_up_epoch: 0
+weight_decay: 0.0005
+weights: ./work_dir/ntu/xsub/TS/MSAG3D_with_warm_up/train/weights/weights-57-57114.pt
+work_dir: ./work_dir/ntu/xsub/TS/MSAG3D_with_warm_up/test
