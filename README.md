@@ -13,8 +13,8 @@ The paper considers AAGCN and MS-G3D backbones. SIN and ARN are trained separate
 
 | Folder                             | Contents                                                                       |
 | ---------------------------------- | ------------------------------------------------------------------------------ |
-| [STAGE1_SIN](STAGE1_SIN/README.md) | Skeleton imputation, ablations, evaluation, and repair visualization           |
-| [STAGE2_ARN](STAGE2_ARN/README.md) | Action recognition, teacher-score KD, configurations, and experiment snapshots |
+| [STAGE1_SIN] | Skeleton imputation, ablations, evaluation, and repair visualization           |
+| [STAGE2_ARN] | Action recognition, teacher-score KD, configurations, and experiment snapshots |
 
 ## Evaluation
 
